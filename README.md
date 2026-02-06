@@ -136,6 +136,18 @@ Want to download directly to your phone?
 
 ---
 
+## 🐳 Docker Support (One-Click Run)
+
+If you have Docker installed, you can skip all the setup steps!
+
+1.  **Run**:
+    ```bash
+    docker-compose up --build
+    ```
+2.  **Open**: Go to `http://localhost:3000`.
+
+---
+
 ## 🧩 Usage Guide
 
 1.  **Paste URL**: Copy a link from YouTube (Video or Playlist).
