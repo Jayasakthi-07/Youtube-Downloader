@@ -1,45 +1,75 @@
-# Vortex Downloader 🚀
+# 🌀 Vortex Downloader
+### *Premium 4K Video & Audio Downloader*
 
-**Vortex Downloader** is a premium, high-performance YouTube Downloader built with a modern tech stack. It supports **4K Video Downloads**, **320kbps Audio Extraction**, **Playlist Support**, and features a stunning **Cyberpunk/Glassmorphism UI**.
+![Vortex Banner](https://img.shields.io/badge/Vortex-Downloader-cyan?style=for-the-badge&logo=youtube&logoColor=white) 
+![Status](https://img.shields.io/badge/Status-Active-green?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)
 
-![Vortex Downloader](https://i.imgur.com/placeholder-demo.png) 
-*(Screenshots can be added here)*
+**Vortex Downloader** is a next-generation media tool built for speed and quality. It combines a stunning **Cyberpunk/Glassmorphism UI** with a powerful backend capable of **4K/8K Video Downloads**, **320kbps Audio Extraction**, and **Batch Playlist Processing**.
 
-## ✨ Features
+---
 
-- **Extreme Quality**: Download videos in **4K/8K** and audio in **320kbps MP3**.
-- **Playlist Support**: Paste a playlist URL to batch download videos.
-- **Modern UI**: A "Vortex" themed interface with dynamic backgrounds and glassmorphism.
-- **Fast & Efficient**: Powered by `yt-dlp` for reliable extraction and `FFmpeg` for high-quality merging.
-- **Real-time Progress**: Live progress bars using WebSockets/Polling.
-- **Mobile Ready**: Fully responsive design that works on mobile devices over the local network.
-- **Auto-Cleanup**: Automatically cleans up old files to save disk space.
+## ✨ Key Features
+
+| Feature | Description |
+| :--- | :--- |
+| **🎥 Extreme Quality** | Download videos in crystal clear **4K, 8K, and 60FPS**. |
+| **🎵 Hi-Fi Audio** | Auto-installs **320kbps MP3s** for the best listening experience. |
+| **📑 Playlist Support** | Paste a playlist URL to browse and bulk download tracks. |
+| **🎨 Modern UI** | A beautiful "Vortex" interface with dynamic glowing backgrounds. |
+| **⚡ Real-Time** | Live progress bars and speed tracking via WebSockets. |
+| **📱 Mobile Ready** | Use it on your **Phone or Tablet** via your local Wi-Fi. |
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: [Next.js 14+](https://nextjs.org/), TypeScript, TailwindCSS, Shadcn UI.
-- **Backend**: [FastAPI](https://fastapi.tiangolo.com/) (Python), `yt-dlp`.
-- **Media Processing**: [FFmpeg](https://ffmpeg.org/).
+*   **Frontend**: [Next.js 15](https://nextjs.org/) • TypeScript • TailwindCSS • Shadcn UI
+*   **Backend**: [FastAPI](https://fastapi.tiangolo.com/) • Python 3.10+ • `yt-dlp`
+*   **Core**: FFmpeg (Media Processing)
 
 ---
 
 ## 📋 Prerequisites
 
-Before you begin, ensure you have the following installed on your machine:
+Before you start, you need three things installed looking like this:
 
-1.  **Python 3.10+**: [Download Here](https://www.python.org/downloads/)
-    *   *Make sure to check "Add Python to PATH" during installation.*
-2.  **Node.js 18+**: [Download Here](https://nodejs.org/)
-3.  **FFmpeg**: [Download Here](https://ffmpeg.org/download.html)
-    *   **Crucial**: You must add `ffmpeg/bin` to your System PATH so the downloader can merge video and audio.
+1.  **Python 3.10+**: [Download Python](https://www.python.org/downloads/)
+    *   ⚠️ **IMPORTANT:** During installation, check the box **"Add Python to PATH"**.
+2.  **Node.js 18+**: [Download Node.js](https://nodejs.org/)
+3.  **FFmpeg**: (See the detailed guide below)
 
 ---
 
-## ⚙️ Installation Guide
+## 🛑 How to Install FFmpeg (Crucial Step)
 
-Follow these steps to set up the project locally.
+**FFmpeg** is the engine that merges video and audio. Without it, you cannot download high-quality 1080p/4K videos.
+
+### 🪟 For Windows Users (Beginner Friendly)
+
+1.  **Download**: Go to [gyan.dev/ffmpeg/builds](https://www.gyan.dev/ffmpeg/builds/) and download `ffmpeg-git-full.7z`.
+2.  **Extract**: Extract the folder (using 7-Zip or WinRAR). Rename the extracted folder to just `ffmpeg`.
+3.  **Move**: Move the `ffmpeg` folder to your C: drive directly (e.g., `C:\ffmpeg`).
+4.  **Add to PATH**:
+    *   Press `Win + S` and search for **"Edit the system environment variables"**.
+    *   Click **Environment Variables** button.
+    *   In the **System variables** section (bottom box), find and select **Path**, then click **Edit**.
+    *   Click **New** and type: `C:\ffmpeg\bin`
+    *   Click **OK** on all windows to save.
+5.  **Verify**: Open a new Command Prompt (CMD) and type `ffmpeg -version`. If you see version info, you did it! 🎉
+
+### 🍎 For Mac Users
+```bash
+brew install ffmpeg
+```
+
+### 🐧 For Linux Users
+```bash
+sudo apt update && sudo apt install ffmpeg
+```
+
+---
+
+## 🚀 Installation & Setup
 
 ### 1. Clone the Repository
 ```bash
@@ -48,27 +78,20 @@ cd Youtube-Downloader
 ```
 
 ### 2. Backend Setup
-Navigate to the `backend` folder and set up the Python environment.
+Typically takes 2 minutes.
 
 ```bash
 cd backend
-
-# Create a virtual environment
+# Create virtual environment
 python -m venv venv
-
-# Activate the virtual environment
-# Windows:
+# Activate it (Windows)
 .\venv\Scripts\activate
-# Mac/Linux:
-# source venv/bin/activate
-
-# Install dependencies
+# Install requirements
 pip install -r requirements.txt
 ```
-*(Note: If `requirements.txt` is missing, install manually: `pip install fastapi uvicorn yt-dlp python-multipart types-requests`)*
 
 ### 3. Frontend Setup
-Open a new terminal, navigate to the `frontend` folder, and install dependencies.
+Typically takes 2 minutes.
 
 ```bash
 cd frontend
@@ -77,54 +100,58 @@ npm install
 
 ---
 
-## 🚀 How to Run
+## ⚡ How to Run
 
-You need to run the **Backend** and **Frontend** simultaneously in two separate terminals.
+Open **two separate terminals** (Command Prompts) to run the app.
 
-### Terminal 1: Start Backend
+### Terminal 1: The Backend 🧠
 ```bash
 cd backend
 .\venv\Scripts\activate
-# Run the server (Hosts on 0.0.0.0 for network access)
+# Start Server (Accessible on Network)
 python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
-*The backend will start at `http://localhost:8000`.*
+*You should see: `Uvicorn running on http://0.0.0.0:8000`*
 
-### Terminal 2: Start Frontend
+### Terminal 2: The Frontend 🎨
 ```bash
 cd frontend
+# Start UI (Accessible on Network)
 npm run dev
 ```
-*The frontend will start at `http://localhost:3000`.*
+*You should see: `Ready in 3000`*
 
 ---
 
-## 📱 Using on Mobile (Local Network)
+## 📱 How to Use on Mobile (Wi-Fi)
 
-To access the downloader from your phone (connected to the same Wi-Fi):
+Want to download directly to your phone?
 
-1.  Find your PC's Local IP Address (e.g., `192.168.1.5`).
-    *   *Windows*: Open CMD and type `ipconfig`. Look for "IPv4 Address".
-2.  Open your phone's browser.
-3.  Go to `http://<YOUR_IP>:3000` (e.g., `http://192.168.1.5:3000`).
-4.  **Enjoy!** The app automatically connects to the backend and works just like on desktop.
-
----
-
-## 🧩 Usage Instructions
-
-1.  **Copy URL**: Copy a YouTube Video or Playlist URL.
-2.  **Paste & Analyze**: Paste it into the input box and click "Analyze".
-3.  **Select Format**:
-    *   **Video**: Choose resolution (1080p, 4K, etc.).
-    *   **Audio**: Choose quality (320kbps recommended).
-4.  **Download**: Click the download button. The file will be processed and saved to your device.
+1.  Find your PC's **IPv4 Address**:
+    *   Open CMD and type `ipconfig`.
+    *   Look for `IPv4 Address` (e.g., `192.168.1.5`).
+2.  Open your Phone's Browser (Chrome/Safari).
+3.  Type: `http://192.168.1.5:3000` (Replace with your IP).
+4.  That's it! The app works perfectly on mobile.
 
 ---
 
-## ⚠️ Legal Disclaimer
-This tool is for personal use only. Users must respect YouTube's Terms of Service and copyright laws. Do not download copyrighted content without permission.
+## 🧩 Usage Guide
+
+1.  **Paste URL**: Copy a link from YouTube (Video or Playlist).
+2.  **Analyze**: Paste it in the Vortex search bar.
+3.  **Choose Quality**:
+    *   **Video Tab**: Select 4K, 1080p, or 720p.
+    *   **Audio Tab**: Select "Ultra High (320kbps)".
+4.  **Download**: Click the button and watch the magic happen.
 
 ---
 
-**Made with ❤️ by [Jayasakthi-07](https://github.com/Jayasakthi-07)**
+## ⚠️ Disclaimer
+*This project is for educational purposes. Please respect YouTube's Terms of Service and content creators' rights. Do not download copyrighted materials without permission.*
+
+---
+
+<p align="center">
+  Made with ❤️ by <b>Jayasakthi-07</b>
+</p>
